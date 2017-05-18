@@ -1,0 +1,4 @@
+dist/elm.js
+node_modules/
+.projectile
+elm-stuff/

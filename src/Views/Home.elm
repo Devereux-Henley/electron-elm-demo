@@ -2,7 +2,7 @@ module Views.Home exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Model exposing (..)
+import Msgs exposing (..)
 
 
 view : Html Msg

@@ -1,9 +1,8 @@
-module Files exposing (..)
+module Views.File exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Model exposing (..)
-
+import Msgs exposing (..)
 
 view : String -> Html Msg
 view fileName =

@@ -5,13 +5,19 @@ import Html.Attributes exposing (..)
 import Html.Events exposing (..)
 import Model exposing (Model)
 import Msgs exposing (..)
+import Routing exposing (..)
+import Views.File
+import Views.Home
 
 
 view : Model -> Html Msg
 view model =
     div
         [ class "page" ]
-        [ div
+        [ nav
+            [ class "navigation" ]
+            [ text "nav-bar goes here. " ]
+        , div
             [ class "name" ]
             [ text model.name ]
         , label
@@ -37,7 +43,23 @@ view model =
                 ]
                 []
             ]
+        , div
+            [ class "page" ]
+            [ page model ]
         ]
+
+
+page : Model -> Html Msg
+page model =
+    case model.route of
+        HomeView ->
+            Views.Home.view
+
+        FileView fileName ->
+            Views.File.view fileName
+
+        NotFoundView ->
+            Views.Home.view
 
 
 changeName : String -> Msg

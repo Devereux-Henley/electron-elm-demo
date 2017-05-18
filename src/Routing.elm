@@ -7,7 +7,7 @@ import UrlParser exposing (..)
 type Route
     = HomeView
     | FileView String
-    | NotFound
+    | NotFoundView
 
 
 matchers : Parser (Route -> a) a
@@ -25,4 +25,4 @@ parseLocation location =
             route
 
         Nothing ->
-            NotFound
+            NotFoundView

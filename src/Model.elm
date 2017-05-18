@@ -4,12 +4,6 @@ import Navigation exposing (..)
 import Routing exposing (..)
 
 
-type Msg
-    = UpdateName String
-    | UpdateFileName String
-    | UrlChange Location
-
-
 type alias Model =
     { name : String
     , fileName : String

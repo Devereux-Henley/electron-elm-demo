@@ -1,6 +1,9 @@
 module Update exposing (..)
 
-import Model exposing (..)
+import Model exposing (Model)
+import Msgs exposing (..)
+import Routing exposing (parseLocation)
+
 
 update : Msg -> Model -> ( Model, Cmd msg )
 update msg model =
@@ -11,5 +14,11 @@ update msg model =
         UpdateFileName newFileName ->
             ( { model | fileName = newFileName }, Cmd.none )
 
-        UrlChange location ->
-            ( { model | history = location :: model.history }, Cmd.none )
+        LocationChange location ->
+            let
+                newRoute =
+                    parseLocation location
+            in
+            ( { model | history = location :: model.history, route = newRoute }
+            , Cmd.none
+            )

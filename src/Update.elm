@@ -2,6 +2,7 @@ module Update exposing (..)
 
 import Model exposing (Model)
 import Msgs exposing (..)
+import Ports.Dialog exposing (..)
 import Routing exposing (parseLocation)
 
 
@@ -13,6 +14,9 @@ update msg model =
 
         UpdateFileName newFileName ->
             ( { model | fileName = newFileName }, Cmd.none )
+
+        ShowFileDialog properties ->
+            ( model, openDialog properties )
 
         LocationChange location ->
             let

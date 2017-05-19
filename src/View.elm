@@ -5,6 +5,7 @@ import Html.Attributes exposing (..)
 import Html.Events exposing (..)
 import Model exposing (Model)
 import Msgs exposing (..)
+import Ports.Dialog exposing (..)
 import Routing exposing (..)
 import Views.File
 import Views.Home
@@ -43,6 +44,10 @@ view model =
                 ]
                 []
             ]
+        , button
+            [ class "file-selection-button"
+            , onClick showFileDialog ]
+            [ text "Select file." ]
         , div
             [ class "page" ]
             [ page model ]
@@ -70,3 +75,11 @@ changeName str =
 changeFileName : String -> Msg
 changeFileName str =
     UpdateFileName str
+
+showFileDialog : Msg
+showFileDialog =
+    let
+        properties =
+            [ "openFile" ]
+    in
+        ShowFileDialog properties

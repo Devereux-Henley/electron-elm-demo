@@ -7,6 +7,7 @@ import Routing exposing (..)
 type alias Model =
     { name : String
     , fileName : String
+    , fileContents : String
     , history : List Location
     , route : Route
     }
@@ -14,6 +15,6 @@ type alias Model =
 
 init : Location -> ( Model, Cmd msg )
 init location =
-    ( Model "Devo" "" [ location ] (parseLocation location)
+    ( Model "Devo" "" "" [ location ] (parseLocation location)
     , Cmd.none
     )

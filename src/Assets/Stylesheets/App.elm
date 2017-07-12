@@ -17,5 +17,5 @@ css : Stylesheet
 css =
     (stylesheet << namespace "app")
         [ body
-            [ backgroundColor (rgb 190 95 64) ]
+            [ backgroundColor (rgb 220 95 64) ]
         ]

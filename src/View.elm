@@ -51,7 +51,7 @@ view model =
             [ class "file-selection-button"
             , onClick showFileDialog
             ]
-            [ text "Select file." ]
+            [ text "Select files." ]
         , div
             [ class "page" ]
             [ page model ]

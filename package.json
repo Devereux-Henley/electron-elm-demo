@@ -9,7 +9,8 @@
     "css": "node node_modules/elm-css/elm-css src/Assets/Stylesheets.elm --output dist/css --module Assets.Stylesheets",
     "css:watch": "node node_modules/chokidar-cli \"src/Assets/Stylesheets/*.elm\" -c \"yarn run css\"",
     "start": "electron dist/main.js",
-    "watch": "yarn run css & yarn run build & yarn run start & yarn run css:watch & yarn run build:watch"
+    "watch:linux": "yarn run css & yarn run build & yarn run build:watch & yarn run css:watch & yarn run start & wait",
+    "watch:windows": "yarn run css & yarn run build & start /b cmd /c yarn run css:watch & start /b cmd /c yarn run build:watch & yarn run start"
   },
   "author": "Devereux Henley",
   "license": "ISC",

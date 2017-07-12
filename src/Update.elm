@@ -1,5 +1,6 @@
 module Update exposing (..)
 
+import Dict
 import Model exposing (Model)
 import Msgs exposing (..)
 import Ports.Dialog exposing (..)
@@ -13,23 +14,24 @@ update msg model =
         UpdateName newName ->
             ( { model | name = newName }, Cmd.none )
 
-        UpdateFileName newFileName ->
-            ( { model | fileName = newFileName }, readFile newFileName )
+        ReadFile fileName ->
+            ( model, readFile fileName )
 
-        UpdateFileContents newFileContents ->
-            ( { model | fileContents = newFileContents }, Cmd.none )
+        AppendFile file ->
+            let
+                ( fileName, fileContents ) =
+                    file
+            in
+                ( { model | files = Dict.insert fileName fileContents model.files }, Cmd.none )
 
         ShowFileDialog properties ->
             ( model, openDialog properties )
-
-        ReadFile fileName ->
-            ( model, readFile fileName )
 
         LocationChange location ->
             let
                 newRoute =
                     parseLocation location
             in
-            ( { model | history = location :: model.history, route = newRoute }
-            , Cmd.none
-            )
+                ( { model | history = location :: model.history, route = newRoute }
+                , Cmd.none
+                )

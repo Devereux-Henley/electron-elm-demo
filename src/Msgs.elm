@@ -1,11 +1,11 @@
 module Msgs exposing (..)
 
 import Navigation exposing (Location)
+import Types exposing (..)
 
 type Msg
-    = UpdateName String
-    | UpdateFileName String
-    | UpdateFileContents String
+    = AppendFile FileTuple
+    | LocationChange Location
     | ShowFileDialog (List String)
     | ReadFile String
-    | LocationChange Location
+    | UpdateName String

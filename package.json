@@ -1,18 +1,25 @@
 {
   "name": "electron-elm-demo",
   "version": "1.0.0",
-  "description": "ez",
+  "description": "demo application for using elm with electron",
   "main": "dist/main.js",
   "scripts": {
     "build": "elm make src/Main.elm --output dist/elm.js || true",
-    "build:watch": "chokidar '**/*.elm' -c 'npm run build'",
+    "build:watch": "node node_modules/chokidar-cli \"**/*.elm\" -c \"yarn run build\"",
+    "css": "node node_modules/elm-css/elm-css src/Assets/Stylesheets.elm --output dist/css --module Assets.Stylesheets",
+    "css:watch": "node node_modules/chokidar-cli \"src/Assets/Stylesheets/*.elm\" -c \"yarn run css\"",
     "start": "electron dist/main.js",
-    "watch": "npm run start & npm run build:watch & wait"
+    "watch": "yarn run css & yarn run build & yarn run start & yarn run css:watch & yarn run build:watch"
   },
   "author": "Devereux Henley",
   "license": "ISC",
   "devDependencies": {
     "chokidar": "^1.7.0",
-    "electron": "^1.6.8"
+    "chokidar-cli": "^1.2.0",
+    "electron": "^1.6.11"
+  },
+  "repository": "git@github.com:Devereux-Henley/electron-elm-demo.git",
+  "dependencies": {
+    "elm-css": "^0.6.1"
   }
 }

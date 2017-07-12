@@ -1,11 +1,13 @@
 module View exposing (..)
 
+import Dict
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
 import Model exposing (Model)
 import Msgs exposing (..)
 import Routing exposing (..)
+import Types exposing (..)
 import Views.File
 import Views.Home
 
@@ -16,7 +18,17 @@ view model =
         [ class "page" ]
         [ nav
             [ class "navigation" ]
-            [ text "nav-bar goes here. " ]
+            [ a
+                [ class "navigation-link"
+                , href "#"
+                ]
+                [ text "Home" ]
+            , a
+                [ class "navigation-link"
+                , href "#about"
+                ]
+                [ text "About" ]
+            ]
         , div
             [ class "name" ]
             [ text model.name ]
@@ -30,12 +42,11 @@ view model =
                 ]
                 []
             ]
-        , div
-            [ class "file-name" ]
-            [ text model.fileName ]
-        , div
-            [class "file-contents"]
-            [ text model.fileContents ]
+        , div [ class "files" ]
+            (List.map
+                fileComponent
+                (Dict.toList model.files)
+            )
         , button
             [ class "file-selection-button"
             , onClick showFileDialog
@@ -60,14 +71,26 @@ page model =
             Views.Home.view
 
 
+fileComponent : FileTuple -> Html Msg
+fileComponent file =
+    let
+        ( fileName, fileContents ) =
+            file
+    in
+        div
+            [ class "file" ]
+            [ div
+                [ class "file-name" ]
+                [ text fileName ]
+            , div
+                [ class "file-contents" ]
+                [ text fileContents ]
+            ]
+
+
 changeName : String -> Msg
 changeName str =
     UpdateName str
-
-
-changeFileName : String -> Msg
-changeFileName str =
-    UpdateFileName str
 
 
 showFileDialog : Msg
@@ -76,4 +99,4 @@ showFileDialog =
         properties =
             [ "openFile" ]
     in
-    ShowFileDialog properties
+        ShowFileDialog properties

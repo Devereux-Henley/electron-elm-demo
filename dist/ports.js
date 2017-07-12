@@ -15,6 +15,7 @@ coreApplication
   .subscribe((configurationList) =>
              {
                let fileNameArray = dialog.showOpenDialog({properties: configurationList});
+
                if(fileNameArray)
                {
                  let fileName = fileNameArray[0];
@@ -35,6 +36,6 @@ coreApplication
                              coreApplication
                                .ports
                                .readFileResult
-                               .send(result);
+                               .send([fileName, result]);
                            });
              });

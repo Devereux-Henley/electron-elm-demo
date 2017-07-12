@@ -9,6 +9,6 @@ import Ports.Filesystem exposing (..)
 subscriptions : Model -> Sub Msg
 subscriptions model =
     Sub.batch
-        [ dialogResult UpdateFileName
-        , readFileResult UpdateFileContents
+        [ dialogResult ReadFile
+        , readFileResult AppendFile
         ]

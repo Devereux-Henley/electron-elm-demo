@@ -1,5 +1,6 @@
 module View exposing (..)
 
+import Assets.Stylesheets.Shared exposing (..)
 import Dict
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -12,25 +13,29 @@ import Views.File
 import Views.Home
 
 
+{ id, class, classList } =
+    appNamespace
+
+
 view : Model -> Html Msg
 view model =
     div
-        [ class "page" ]
+        [ class [ PageWrapper ] ]
         [ nav
-            [ class "navigation" ]
+            [ class [ Navigation ] ]
             [ a
-                [ class "navigation-link"
+                [ class [ NavigationLink ]
                 , href "#"
                 ]
                 [ text "Home" ]
             , a
-                [ class "navigation-link"
+                [ class [ NavigationLink ]
                 , href "#about"
                 ]
                 [ text "About" ]
             ]
         , div
-            [ class "name" ]
+            [ Html.Attributes.class "name" ]
             [ text model.name ]
         , label
             [ for "name-input" ]
@@ -42,18 +47,18 @@ view model =
                 ]
                 []
             ]
-        , div [ class "files" ]
+        , div [ class [ FileList ] ]
             (List.map
                 fileComponent
                 (Dict.toList model.files)
             )
         , button
-            [ class "file-selection-button"
+            [ class [ FileSelectionButton ]
             , onClick showFileDialog
             ]
             [ text "Select files." ]
         , div
-            [ class "page" ]
+            [ class [ PageWrapper ] ]
             [ page model ]
         ]
 
@@ -78,12 +83,12 @@ fileComponent file =
             file
     in
         div
-            [ class "file" ]
+            [ class [ File ] ]
             [ div
-                [ class "file-name" ]
+                [ class [ FileName ] ]
                 [ text fileName ]
             , div
-                [ class "file-contents" ]
+                [ class [ FileContents ] ]
                 [ text fileContents ]
             ]
 

@@ -1,3 +1,8 @@
-body {
-    background-color: rgb(220, 95, 64);
+.appNavigation {
+    display: flex;
+    justify-content: space-between;
+}
+
+a.appNavigationLink {
+    text-decoration: none;
 }

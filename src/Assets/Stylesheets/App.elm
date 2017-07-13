@@ -1,21 +1,20 @@
 module Assets.Stylesheets.App exposing (..)
 
+import Assets.Stylesheets.Shared exposing (..)
 import Css exposing (..)
-import Css.Elements exposing (body, li)
+import Css.Elements exposing (body, li, a)
 import Css.Namespace exposing (namespace)
-
-
-type CssClasses
-    = Navigation
-
-
-type CssIds
-    = App
 
 
 css : Stylesheet
 css =
-    (stylesheet << namespace "app")
-        [ body
-            [ backgroundColor (rgb 220 95 64) ]
+    (stylesheet << namespace appNamespace.name)
+        [ class Navigation
+            [ displayFlex
+            , justifyContent spaceBetween
+            ]
+        , a
+            [ withClass NavigationLink
+                [ textDecoration none ]
+            ]
         ]

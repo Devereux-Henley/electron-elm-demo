@@ -7,6 +7,7 @@ import Subscription exposing (..)
 import Update exposing (..)
 import View exposing (..)
 
+
 main : Program Never Model Msg
 main =
     program LocationChange

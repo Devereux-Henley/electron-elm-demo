@@ -17,7 +17,7 @@
   "devDependencies": {
     "chokidar": "^1.7.0",
     "chokidar-cli": "^1.2.0",
-    "electron": "^1.6.11"
+    "electron": "^1.6.15"
   },
   "repository": "git@github.com:Devereux-Henley/electron-elm-demo.git",
   "dependencies": {

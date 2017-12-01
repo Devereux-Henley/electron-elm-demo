@@ -1,6 +1,7 @@
 module Assets.Stylesheets.App exposing (..)
 
-import Assets.Stylesheets.Shared exposing (..)
+import Assets.Stylesheets.Shared exposing (appNamespace)
+import Assets.Stylesheets.Shared.Navigation exposing(NavigationCssClass(..))
 import Css exposing (..)
 import Css.Elements exposing (body, li, a)
 import Css.Namespace exposing (namespace)

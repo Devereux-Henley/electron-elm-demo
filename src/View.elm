@@ -93,10 +93,10 @@ fileComponent file =
             [ class [ FileItem ] ]
             [ div
                 [ class [ FileName ] ]
-                [ text fileName ]
-            , div
-                [ class [ FileContents ] ]
-                [ text fileContents ]
+                [ a
+                    [ href ("#files" ++ "/" ++ fileName) ]
+                    [ text fileName ]
+                ]
             ]
 
 

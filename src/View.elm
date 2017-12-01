@@ -1,6 +1,9 @@
 module View exposing (..)
 
 import Assets.Stylesheets.Shared exposing (..)
+import Assets.Stylesheets.Shared.File exposing (..)
+import Assets.Stylesheets.Shared.Navigation exposing (..)
+import Assets.Stylesheets.Shared.Page exposing (..)
 import Dict
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -9,6 +12,7 @@ import Model exposing (Model)
 import Msgs exposing (..)
 import Routing exposing (..)
 import Types exposing (..)
+import Views.About
 import Views.File
 import Views.Home
 
@@ -22,7 +26,7 @@ view model =
     div
         [ class [ PageWrapper ] ]
         [ nav
-            [ class [ Navigation ] ]
+            [ class [ NavigationBar ] ]
             [ a
                 [ class [ NavigationLink ]
                 , href "#"
@@ -69,6 +73,9 @@ page model =
         HomeView ->
             Views.Home.view
 
+        AboutView ->
+            Views.About.view
+
         FileView fileName ->
             Views.File.view fileName
 
@@ -83,7 +90,7 @@ fileComponent file =
             file
     in
         div
-            [ class [ File ] ]
+            [ class [ FileItem ] ]
             [ div
                 [ class [ FileName ] ]
                 [ text fileName ]

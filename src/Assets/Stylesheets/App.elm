@@ -10,7 +10,7 @@ import Css.Namespace exposing (namespace)
 css : Stylesheet
 css =
     (stylesheet << namespace appNamespace.name)
-        [ class Navigation
+        [ class NavigationBar
             [ displayFlex
             , justifyContent spaceBetween
             ]

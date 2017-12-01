@@ -2,7 +2,7 @@ module Assets.Stylesheets.Shared.File exposing (..)
 
 
 type FileCssClass
-    = File
+    = FileItem
     | FileContents
     | FileList
     | FileName
